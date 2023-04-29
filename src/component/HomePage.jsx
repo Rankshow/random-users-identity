@@ -12,7 +12,8 @@ const HomePage = () => {
 
   const generaterUserInfo = () => {
     fetch('https://randomuser.me/api/').then((res) => res.json()).then(data => {
-      console.log("Give me the data", data.results)   
+      console.log("Give me the data", data.results) 
+      console.log(data.results)  
       setUsers(data.results);
     })
   }
@@ -33,7 +34,7 @@ const HomePage = () => {
        title={users[0]?.name.title + " " + users[0]?.name.first + " " + users[0]?.name.last }
        email={users[0]?.email} 
         phone={users[0]?.phone} 
-        address={users[0]?.location.city + "" + users[0]?.location.state} 
+        address={users[0]?.location.country + " " + users[0]?.location.state} 
         dob={new Date(users[0]?.dob.date).toDateString()} />
        <div className="btn">
        <button onClick={generaterUserInfo}>Get User Data</button>
